@@ -22,22 +22,23 @@ function displayProducts(products) {
         const img = document.createElement('img');
         img.src = product.image;
         img.alt = `product: ${product.title}`;
-        img.loading='lazy';
+        img.loading="lazy";
+        img.width=250;
         pictureDiv.appendChild(img);
 
         // Create the product info div
         const infoDiv = document.createElement('div');
         infoDiv.classList.add('product-info');
 
-        const category = document.createElement('p');
+        const category = document.createElement('h5');
         category.classList.add('categories');
         category.textContent = product.category;
 
-        const title = document.createElement('p');
+        const title = document.createElement('h4');
         title.classList.add('title');
         title.textContent = product.title;
 
-        const price = document.createElement('p');
+        const price = document.createElement('h3');
         price.classList.add('price');
         const priceSpan = document.createElement('span');
         priceSpan.textContent = `US$ ${product.price}`;
@@ -65,25 +66,11 @@ function displayProducts(products) {
 }
 
 
-window.onload = () => {
-    let status = 'idle';
-    let productSection = document.querySelector("#all-products");
 
-    window.onscroll = () => {
-        let position = productSection.getBoundingClientRect().top - (window.scrollY + window.innerHeight);
-        if(status == 'idle' && position <= 0) {
-            status = 'fetching';
-            loadProducts();
-    
-            // Simulate heavy operation. It could be a complex price calculation.
-            for (let i = 0; i < 10000000; i++) {
-                const temp = Math.sqrt(i) * Math.sqrt(i);
-            }
+loadProducts();
 
-        }
-    }
-    
-
+// Simulate heavy operation. It could be a complex price calculation.
+for (let i = 0; i < 10000000; i++) {
+    const temp = Math.sqrt(i) * Math.sqrt(i);
 }
-
 
